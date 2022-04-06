@@ -6,9 +6,7 @@
 USE master
 GO
 
-
 -- Total reset
-
 IF OBJECT_ID('bakery.RECEIPTS') IS NOT NULL
     DROP TABLE bakery.RECEIPTS
 IF OBJECT_ID('bakery.CLIENTS') IS NOT NULL
@@ -19,6 +17,8 @@ IF OBJECT_ID('bakery.DISCOUNTS') IS NOT NULL
     DROP TABLE bakery.DISCOUNTS
 IF OBJECT_ID('bakery.GET_TOTAL_RECEIPT_PRICE') IS NOT NULL
     drop FUNCTION bakery.GET_TOTAL_RECEIPT_PRICE
+IF OBJECT_ID('bakery.ADD_NEW_RECEIPT') IS NOT NULL
+    drop PROCEDURE bakery.ADD_NEW_RECEIPT
 IF OBJECT_ID('bakery.BAKERIES') IS NOT NULL
     DROP TABLE bakery.BAKERIES
 
@@ -45,7 +45,6 @@ BEGIN
 END
 GO
 
-
 -- DISCOUNTS
 IF OBJECT_ID('bakery.DISCOUNTS') IS NULL
 BEGIN
@@ -62,7 +61,6 @@ BEGIN
 	VALUES (1000, 0.15, 1, 'Premium client')
 END
 GO
-
 
 -- CLIENTS
 IF OBJECT_ID('bakery.CLIENTS') IS NULL
@@ -85,11 +83,8 @@ BEGIN
 
 	INSERT INTO bakery.CLIENTS (Name, Surname)
 	VALUES ('Chris', 'Chan')
-
-
 END
 GO
-
 
 -- PRODUCTS
 IF OBJECT_ID('bakery.PRODUCTS') IS NULL
@@ -118,7 +113,6 @@ BEGIN
 END
 GO
 
-
 -- RECEIPTS
 CREATE FUNCTION bakery.GET_TOTAL_RECEIPT_PRICE(@clientId int, @productId int)
 RETURNS MONEY AS
@@ -127,6 +121,10 @@ BEGIN
 
     -- SET NORMAL PRICE AS TOTAL PRICE
     SET @totalPrice = (SELECT Price FROM bakery.PRODUCTS WHERE Id = @productId)
+
+    -- Skip discounts for non registered clients
+    IF @clientId = 1
+        return @totalPrice
 
     -- CALCULATE TOTAL PRICE REGARDING ALL POSSIBLE DISCOUNTS
     DECLARE @totalMoneySpent MONEY
@@ -162,6 +160,17 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE bakery.ADD_NEW_RECEIPT @clientId INT, @productId INT, @bakeryCode NVARCHAR(2)
+AS
+BEGIN
+    DECLARE @totalPrice MONEY
+    SET @totalPrice = bakery.GET_TOTAL_RECEIPT_PRICE (@clientId, @productId)
+
+    INSERT INTO bakery.RECEIPTS (ClientId, ProductId, BakeryCode, TotalPrice)
+	VALUES (@clientId, @productId, @bakeryCode, @totalPrice)
+END
+GO
+
 IF OBJECT_ID('bakery.RECEIPTS') IS NULL
 BEGIN
 	CREATE TABLE bakery.RECEIPTS
@@ -172,21 +181,13 @@ BEGIN
 	,   BakeryCode      NVARCHAR(2)     NOT NULL                        FOREIGN KEY REFERENCES bakery.BAKERIES(BakeryCode)
 	,	TotalPrice	    MONEY           NOT NULL    DEFAULT 0
 	,   Date            DATETIME        NOT NULL    DEFAULT GETDATE()
-	)
+	);
 
-	INSERT INTO bakery.RECEIPTS (ClientId, ProductId, BakeryCode, TotalPrice)
-	VALUES (2, 1, 'AB', bakery.GET_TOTAL_RECEIPT_PRICE(2, 1))
-
-	INSERT INTO bakery.RECEIPTS (ClientId, ProductId, BakeryCode, TotalPrice)
-	VALUES (2, 1, 'CD', bakery.GET_TOTAL_RECEIPT_PRICE(2, 1))
-
-	INSERT INTO bakery.RECEIPTS (ClientId, ProductId, BakeryCode, TotalPrice)
-	VALUES (3, 2, 'EF', bakery.GET_TOTAL_RECEIPT_PRICE(3, 2))
-
-	INSERT INTO bakery.RECEIPTS (ClientId, ProductId, BakeryCode, TotalPrice)
-	VALUES (4, 3, 'EF', bakery.GET_TOTAL_RECEIPT_PRICE(4, 3))
-
-	INSERT INTO bakery.RECEIPTS (ClientId, ProductId, BakeryCode)
-	VALUES (1, 1, 'AB')
+	EXEC bakery.ADD_NEW_RECEIPT @clientId = 2, @productId = 1, @bakeryCode = 'AB';
+	EXEC bakery.ADD_NEW_RECEIPT @clientId = 2, @productId = 1, @bakeryCode = 'CD';
+	EXEC bakery.ADD_NEW_RECEIPT @clientId = 3, @productId = 2, @bakeryCode = 'EF';
+	EXEC bakery.ADD_NEW_RECEIPT @clientId = 4, @productId = 3, @bakeryCode = 'EF';
+	EXEC bakery.ADD_NEW_RECEIPT @clientId = 1, @productId = 1, @bakeryCode = 'AB';
 END
 GO
+
