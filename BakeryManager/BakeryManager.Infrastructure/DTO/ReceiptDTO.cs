@@ -1,5 +1,4 @@
-﻿using System.Data.SqlTypes;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace BakeryManager.Infrastructure.DTO;
 
@@ -18,7 +17,7 @@ public class ReceiptDTO
     public string BakeryCode { get; set; }
     
     [NotNull]
-    public SqlMoney TotalPrice { get; set; }
+    public double TotalPrice { get; set; }
     
     [NotNull]
     public DateTime Date { get; set; }

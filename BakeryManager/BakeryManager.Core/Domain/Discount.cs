@@ -1,5 +1,4 @@
-﻿using System.Data.SqlTypes;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace BakeryManager.Core.Domain;
 
@@ -9,7 +8,7 @@ public class Discount
     public int Id { get; set; }
     
     [NotNull]
-    public SqlMoney MoneyThreshold { get; set; }
+    public double MoneyThreshold { get; set; }
     
     [NotNull]
     public double ValueInPercents { get; set; }

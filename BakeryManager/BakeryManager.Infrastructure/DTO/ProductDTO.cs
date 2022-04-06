@@ -1,5 +1,4 @@
-﻿using System.Data.SqlTypes;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace BakeryManager.Infrastructure.DTO;
 
@@ -12,5 +11,5 @@ public class ProductDTO
     public string Name { get; set; }
     
     [NotNull]
-    public SqlMoney Price { get; set; }
+    public double Price { get; set; }
 }
