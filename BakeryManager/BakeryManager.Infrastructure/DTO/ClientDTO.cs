@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace BakeryManager.Core.Domain;
+namespace BakeryManager.Infrastructure.DTO;
 
-public class Client
+public class ClientDTO
 {
     [NotNull]
     public int Id { get; set; }

@@ -1,9 +1,9 @@
 ﻿using System.Data.SqlTypes;
 using System.Diagnostics.CodeAnalysis;
 
-namespace BakeryManager.Core.Domain;
+namespace BakeryManager.Infrastructure.DTO;
 
-public class Receipt
+public class ReceiptDTO
 {
     [NotNull]
     public int Id { get; set; }

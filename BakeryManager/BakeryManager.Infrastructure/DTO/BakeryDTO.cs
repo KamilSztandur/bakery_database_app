@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace BakeryManager.Core.Domain;
+namespace BakeryManager.Infrastructure.DTO;
 
-public class Bakery
+public class BakeryDTO
 {
     [NotNull]
     public string BakeryCode { get; }

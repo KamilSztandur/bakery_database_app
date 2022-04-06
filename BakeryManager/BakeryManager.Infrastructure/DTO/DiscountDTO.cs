@@ -1,9 +1,9 @@
 ﻿using System.Data.SqlTypes;
 using System.Diagnostics.CodeAnalysis;
 
-namespace BakeryManager.Core.Domain;
+namespace BakeryManager.Infrastructure.DTO;
 
-public class Discount
+public class DiscountDTO
 {
     [NotNull]
     public int Id { get; set; }
@@ -17,5 +17,5 @@ public class Discount
     [NotNull]
     public bool IsActive { get; set; }
     
-    public String? Description { get; set; }
+    public string? Description { get; set; }
 }
