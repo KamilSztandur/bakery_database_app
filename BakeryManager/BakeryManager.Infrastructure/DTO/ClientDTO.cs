@@ -8,7 +8,7 @@ public class ClientDTO
     public int Id { get; set; }
     
     [NotNull]
-    public string name { get; set; }
+    public string Name { get; set; }
     
     [NotNull]
     public string Surname { get; set; }

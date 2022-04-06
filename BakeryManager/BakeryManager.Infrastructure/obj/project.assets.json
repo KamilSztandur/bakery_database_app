@@ -872,6 +872,16 @@
             "rid": "win"
           }
         }
+      },
+      "BakeryManager.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/BakeryManager.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BakeryManager.Core.dll": {}
+        }
       }
     }
   },
@@ -3036,10 +3046,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "BakeryManager.Core/1.0.0": {
+      "type": "project",
+      "path": "../BakeryManager.Core/BakeryManager.Core.csproj",
+      "msbuildProject": "../BakeryManager.Core/BakeryManager.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "BakeryManager.Core >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.0-preview.2.22153.1",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.0-preview.2.22153.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.0-preview.2.22153.1",
@@ -3079,7 +3095,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\kamil\\DataGripProjects\\bakery_database_app\\BakeryManager\\BakeryManager.Core\\BakeryManager.Core.csproj": {
+              "projectPath": "C:\\Users\\kamil\\DataGripProjects\\bakery_database_app\\BakeryManager\\BakeryManager.Core\\BakeryManager.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

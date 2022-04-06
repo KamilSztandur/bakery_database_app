@@ -10,7 +10,7 @@ public interface IClientRepository
 
     Task<int> AddAsync(Client client);
 
-    Task<Client> GetAsync(int id);
+    Task<Client?> GetAsync(int id);
 
     Task<IEnumerable<Client>> BrowseAllAsync();
 }
