@@ -1,3 +1,8 @@
+/*
+ * Kamil Sztandur 06.04.2022
+ * Use this script to recreate useful views for this database.
+ */
+
 USE master
 GO
 
