@@ -14,8 +14,8 @@ IF OBJECT_ID('main.BakeriesEarnings') IS NOT NULL
     DROP VIEW main.BakeriesEarnings
 IF OBJECT_ID('main.PremiumClients') IS NOT NULL
     DROP VIEW main.PremiumClients
-IF OBJECT_ID('main.GET_CLIENTS_TOTAL_MONEY_SPENT') IS NOT NULL
-    DROP FUNCTION main.GET_CLIENTS_TOTAL_MONEY_SPENT
+IF OBJECT_ID('main.GetTotalMoneySpentByClient') IS NOT NULL
+    DROP FUNCTION main.GetTotalMoneySpentByClient
 IF OBJECT_ID('main.ClientsExpenses') IS NOT NULL
     DROP VIEW main.ClientsExpenses
 GO
@@ -58,7 +58,7 @@ CREATE VIEW main.BakeriesEarnings AS
 GO
 
 -- Premium clients showcase
-CREATE FUNCTION main.GET_CLIENTS_TOTAL_MONEY_SPENT(@clientId int)
+CREATE FUNCTION main.GetTotalMoneySpentByClient(@clientId int)
 RETURNS FLOAT AS
 BEGIN
     DECLARE @totalMoneySpent FLOAT
@@ -73,7 +73,7 @@ CREATE VIEW main.PremiumClients AS
             (c.name + ' ' + c.surname) AS 'Client',
             CAST(
                 IIF(
-                    main.GET_CLIENTS_TOTAL_MONEY_SPENT(c.id) > d.MoneyThreshold AND c.Id != 1,
+                    main.GetTotalMoneySpentByClient(c.id) > d.MoneyThreshold AND c.Id != 1,
                     1,
                     0
                 ) AS BIT
@@ -86,11 +86,11 @@ GO
 CREATE VIEW main.ClientsExpenses AS
     SELECT  c.id AS 'ClientID',
             (c.name + ' ' + c.surname) AS 'Client',
-            main.GET_Clients_TOTAL_MONEY_SPENT(c.id) AS 'TotalExpenses',
+            main.GetTotalMoneySpentByClient(c.id) AS 'TotalExpenses',
             COUNT(r.Id) AS 'TotalUnitsBought'
     FROM main.Clients AS c, main.Receipts AS r
     WHERE r.ClientId = c.Id
     GROUP BY c.id,
              (c.name + ' ' + c.surname),
-             main.GET_Clients_TOTAL_MONEY_SPENT(c.id);
+             main.GetTotalMoneySpentByClient(c.id);
 GO

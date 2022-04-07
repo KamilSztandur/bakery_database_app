@@ -15,10 +15,10 @@ IF OBJECT_ID('main.Discounts') IS NOT NULL
     DROP TABLE main.Discounts
 IF OBJECT_ID('main.Products') IS NOT NULL
     DROP TABLE main.Products
-IF OBJECT_ID('main.GET_TOTAL_RECEIPT_PRICE') IS NOT NULL
-    drop FUNCTION main.GET_TOTAL_RECEIPT_PRICE
-IF OBJECT_ID('main.ADD_NEW_RECEIPT') IS NOT NULL
-    drop PROCEDURE main.ADD_NEW_RECEIPT
+IF OBJECT_ID('main.GetTotalReceiptPrice') IS NOT NULL
+    drop FUNCTION main.GetTotalReceiptPrice
+IF OBJECT_ID('main.AddNewReceipt') IS NOT NULL
+    drop PROCEDURE main.AddNewReceipt
 IF OBJECT_ID('main.Receipts') IS NOT NULL
     DROP TABLE main.Receipts
 GO;
@@ -114,8 +114,8 @@ BEGIN
 END
 GO;
 
-CREATE FUNCTION main.GET_TOTAL_RECEIPT_PRICE(@clientId int, @productId int)
-RETURNS MONEY AS
+CREATE FUNCTION main.GetTotalReceiptPrice(@clientId int, @productId int)
+RETURNS FLOAT AS
 BEGIN
     DECLARE @totalPrice float
 
@@ -160,11 +160,11 @@ BEGIN
 END
 GO;
 
-CREATE PROCEDURE main.ADD_NEW_RECEIPT @clientId INT, @productId INT, @bakeryCode NVARCHAR(2)
+CREATE PROCEDURE main.AddNewReceipt @clientId INT, @productId INT, @bakeryCode NVARCHAR(2)
 AS
 BEGIN
     DECLARE @totalPrice float
-    SET @totalPrice = main.GET_TOTAL_RECEIPT_PRICE (@clientId, @productId)
+    SET @totalPrice = main.GetTotalReceiptPrice (@clientId, @productId)
 
     INSERT INTO main.Receipts(ClientId, ProductId, BakeryCode, TotalPrice, Date)
 	VALUES (@clientId, @productId, @bakeryCode, @totalPrice, GETDATE())
@@ -184,10 +184,10 @@ BEGIN
         CONSTRAINT 	        PK_Receipts 		PRIMARY KEY (Id)
     )
 
-	EXEC main.ADD_NEW_RECEIPT @clientId = 2, @productId = 1, @bakeryCode = 'AB';
-	EXEC main.ADD_NEW_RECEIPT @clientId = 2, @productId = 1, @bakeryCode = 'CD';
-	EXEC main.ADD_NEW_RECEIPT @clientId = 3, @productId = 2, @bakeryCode = 'EF';
-	EXEC main.ADD_NEW_RECEIPT @clientId = 4, @productId = 3, @bakeryCode = 'EF';
-	EXEC main.ADD_NEW_RECEIPT @clientId = 1, @productId = 1, @bakeryCode = 'AB';
+	EXEC main.AddNewReceipt @clientId = 2, @productId = 1, @bakeryCode = 'AB';
+	EXEC main.AddNewReceipt @clientId = 2, @productId = 1, @bakeryCode = 'CD';
+	EXEC main.AddNewReceipt @clientId = 3, @productId = 2, @bakeryCode = 'EF';
+	EXEC main.AddNewReceipt @clientId = 4, @productId = 3, @bakeryCode = 'EF';
+	EXEC main.AddNewReceipt @clientId = 1, @productId = 1, @bakeryCode = 'AB';
 END
 GO;
