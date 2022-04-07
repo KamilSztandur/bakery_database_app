@@ -16,47 +16,42 @@ public class ClientsController : Controller
     }
 
     [HttpGet]
-    public async Task<string> BrowseAll()
+    public async Task<IActionResult> BrowseAll()
     {
         var result = await _clientService.BrowseAll();
-
-        var resultAsJson = Newtonsoft.Json.JsonConvert.SerializeObject(result);
-        return resultAsJson;
+        
+        return Json(result);
     }
 
     [HttpGet("{id}")]
-    public async Task<string> GetClient(int id)
+    public async Task<IActionResult> GetClient(int id)
     {
        var result = await _clientService.GetClient(id);
 
-        var resultAsJson = Newtonsoft.Json.JsonConvert.SerializeObject(result);
-        return resultAsJson;
+       return Json(result);
     }
 
     [HttpPost]
-    public async Task<string> AddClient([FromBody] CreateClient _client)
+    public async Task<IActionResult> AddClient([FromBody] CreateClient _client)
     {
         var result = await _clientService.AddClient(_client);
         
-        var resultAsJson = Newtonsoft.Json.JsonConvert.SerializeObject(result);
-        return resultAsJson;
+        return Json(result);
     }
 
     [HttpPut("{id}")]
-    public async Task<string> UpdateClient([FromBody] CreateClient _client, int id)
+    public async Task<IActionResult> UpdateClient([FromBody] CreateClient _client, int id)
     {
         var result = await _clientService.UpdateClient(id, _client);
 
-        var resultAsJson = Newtonsoft.Json.JsonConvert.SerializeObject(result);
-        return resultAsJson;
+        return Json(result);
     }
 
     [HttpDelete("{id}")]
-    public async Task<string> DeleteClient(int id)
+    public async Task<IActionResult> DeleteClient(int id)
     {
         var result = await _clientService.DeleteClient(id);
-        var resultAsJson = Newtonsoft.Json.JsonConvert.SerializeObject(result);
         
-        return resultAsJson;
+        return Json(result);
     }
 }

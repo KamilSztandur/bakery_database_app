@@ -24,24 +24,15 @@ builder.Services.AddScoped<IReceiptRepository, ReceiptRepository>();
 builder.Services.AddScoped<IReceiptService, ReceiptService>();
 
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(
     options => options.UseSqlServer(
-        "Data Source=.\\sqlexpress;Initial Catalog=bakery;Integrated Security=SSPI;",
-            b => b.MigrationsAssembly("BakeryManager.WebAPI")
+        "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=bakeryapp;Integrated Security=True;TrustServerCertificate=True",
+        b => b.MigrationsAssembly("BakeryManager.Infrastructure")
         )
 );
 
 var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
 app.UseHttpsRedirection();
 app.UseRouting();
