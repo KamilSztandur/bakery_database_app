@@ -19,8 +19,8 @@ public class ClientsController : Controller
     public async Task<IActionResult> BrowseAll()
     {
         var result = await _clientService.BrowseAll();
-        
-        return Json(result);
+
+        return Ok(Json(result));
     }
 
     [HttpGet("{id}")]
@@ -28,23 +28,38 @@ public class ClientsController : Controller
     {
        var result = await _clientService.GetClient(id);
 
-       return Json(result);
+       if (result == null)
+       {
+           return NotFound();
+       }
+       
+       return Ok(Json(result));
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddClient([FromBody] CreateClient _client)
+    public async Task<IActionResult> AddClient([FromBody] CreateClient client)
     {
-        var result = await _clientService.AddClient(_client);
+        var result = await _clientService.AddClient(client);
+
+        if (result == -1)
+        {
+            return BadRequest("Invalid Client body.");
+        }
         
-        return Json(result);
+        return Ok(Json(result));
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateClient([FromBody] CreateClient _client, int id)
+    public async Task<IActionResult> UpdateClient([FromBody] CreateClient client, int id)
     {
-        var result = await _clientService.UpdateClient(id, _client);
+        var result = await _clientService.UpdateClient(id, client);
+        
+        if (result == -1)
+        {
+            return BadRequest("Invalid Client body.");
+        }
 
-        return Json(result);
+        return Ok();;
     }
 
     [HttpDelete("{id}")]
@@ -52,6 +67,11 @@ public class ClientsController : Controller
     {
         var result = await _clientService.DeleteClient(id);
         
-        return Json(result);
+        if (result == -1)
+        {
+            return NotFound();
+        }
+        
+        return Ok();
     }
 }

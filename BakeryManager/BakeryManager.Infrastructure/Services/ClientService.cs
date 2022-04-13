@@ -71,7 +71,7 @@ public class ClientService : IClientService
         return await Task.FromResult(clientsDTOs);
     }
 
-    private bool IsBodyValid(CreateClient body) => body.Name == null || body.Surname == null;
+    private static bool IsBodyValid(CreateClient body) => body.Name != null && body.Surname != null;
     
     private ClientDTO ParseClientIntoClientDTO(Client client)
     {
