@@ -10,7 +10,7 @@ public interface IReceiptRepository
 
     Task<int> AddAsync(Receipt receipt);
 
-    Task<Receipt> GetAsync(int id);
+    Task<Receipt?> GetAsync(int id);
 
     Task<IEnumerable<Receipt>> BrowseAllAsync();
 }

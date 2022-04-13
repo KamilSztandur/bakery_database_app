@@ -10,7 +10,7 @@ public interface IProductRepository
 
     Task<int> AddAsync(Product product);
 
-    Task<Product> GetAsync(int id);
+    Task<Product?> GetAsync(int id);
 
     Task<IEnumerable<Product>> BrowseAllAsync();
 }

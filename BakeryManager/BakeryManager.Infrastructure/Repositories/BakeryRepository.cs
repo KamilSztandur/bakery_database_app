@@ -19,7 +19,7 @@ public class BakeryRepository : IBakeryRepository
             var editedBakery = _appDbContext!.Bakeries.FirstOrDefault(b => b.BakeryCode == bakeryCode);
             if (editedBakery == null)
             {
-                return await Task.FromResult(404);
+                return 404;
             }
             else
             {
@@ -48,7 +48,7 @@ public class BakeryRepository : IBakeryRepository
             var bakeryToRemove = _appDbContext!.Bakeries.FirstOrDefault(bakery => bakery.BakeryCode == bakeryCode);
             if (bakeryToRemove == null)
             {
-                return await Task.FromResult(200);
+                return 200;
             }
             else
             {

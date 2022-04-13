@@ -14,26 +14,104 @@ public class DiscountRepository : IDiscountRepository
     
     public async Task<int> UpdateAsync(int id, Discount discount)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var editedDiscount = _appDbContext!.Discounts.FirstOrDefault(d => d.Id == id);
+            if (editedDiscount == null)
+            {
+                return 404;
+            }
+            else
+            {
+                editedDiscount.Description = discount.Description;
+                editedDiscount.IsActive = discount.IsActive;
+                editedDiscount.MoneyThreshold = discount.MoneyThreshold;
+                editedDiscount.ValueInPercents = discount.ValueInPercents;
+
+                var result = await _appDbContext.SaveChangesAsync();
+                await Task.CompletedTask;
+
+                return result;   
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return -1;
+        }
     }
 
     public async Task<int> DelAsync(int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var discountToRemove = _appDbContext!.Discounts.FirstOrDefault(discount => discount.Id == id);
+            if (discountToRemove == null)
+            {
+                return 200;
+            }
+            else
+            {
+                _appDbContext!.Remove(discountToRemove);
+                var result = await _appDbContext.SaveChangesAsync();
+
+                await Task.CompletedTask;
+                return result;
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return -1;
+        }
     }
 
     public async Task<int> AddAsync(Discount discount)
     {
-        throw new NotImplementedException();
+        try
+        {
+            _appDbContext!.Discounts.Add(discount);
+            var result = _appDbContext.SaveChanges();
+
+            await Task.CompletedTask;
+            return result;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return -1;
+        }
     }
 
-    public async Task<Discount> GetAsync(int id)
+    public async Task<Discount?> GetAsync(int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var discount = await Task.FromResult(
+                _appDbContext!.Discounts.FirstOrDefault(discount => discount.Id == id)
+            );
+
+            return await Task.FromResult(discount);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return null;
+        }
     }
 
     public async Task<IEnumerable<Discount>> BrowseAllAsync()
     {
-        throw new NotImplementedException();
+        try
+        {
+            IEnumerable<Discount> discounts = await Task.FromResult(_appDbContext!.Discounts);
+
+            return discounts;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return new List<Discount>();
+        }
     }
 }

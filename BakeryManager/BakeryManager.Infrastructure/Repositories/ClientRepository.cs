@@ -19,23 +19,23 @@ public class ClientRepository : IClientRepository
             var editedClient = _appDbContext!.Clients.FirstOrDefault(client => client.Id == id);
             if (editedClient == null)
             {
-                return await Task.FromResult(404);
+                return 404;
             }
             else
             {
                 editedClient.Name = newClient.Name;
                 editedClient.Surname = newClient.Surname;
 
-                var result = _appDbContext.SaveChanges();
+                var result = await _appDbContext.SaveChangesAsync();
                 await Task.CompletedTask;
 
-                return await Task.FromResult(result);   
+                return result;   
             }
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            return await Task.FromResult(-1);
+            return -1;
         }
     }
 
@@ -46,21 +46,21 @@ public class ClientRepository : IClientRepository
             var clientToRemove = _appDbContext!.Clients.FirstOrDefault(client => client.Id == id);
             if (clientToRemove == null)
             {
-                return await Task.FromResult(200);
+                return 200;
             }
             else
             {
                 _appDbContext!.Remove(clientToRemove);
-                var result = _appDbContext.SaveChanges();
+                var result = await _appDbContext.SaveChangesAsync();
 
                 await Task.CompletedTask;
-                return await Task.FromResult(result);
+                return result;
             }
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            return await Task.FromResult(-1);
+            return -1;
         }
     }
 
@@ -72,12 +72,12 @@ public class ClientRepository : IClientRepository
             var result = _appDbContext.SaveChanges();
 
             await Task.CompletedTask;
-            return await Task.FromResult(result);
+            return result;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
-            return await Task.FromResult(-1);
+            return -1;
         }
     }
 

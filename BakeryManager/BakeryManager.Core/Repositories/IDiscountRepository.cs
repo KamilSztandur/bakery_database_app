@@ -10,7 +10,7 @@ public interface IDiscountRepository
 
     Task<int> AddAsync(Discount discount);
 
-    Task<Discount> GetAsync(int id);
+    Task<Discount?> GetAsync(int id);
 
     Task<IEnumerable<Discount>> BrowseAllAsync();
 }

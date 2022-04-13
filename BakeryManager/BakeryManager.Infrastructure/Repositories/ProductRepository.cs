@@ -14,26 +14,102 @@ public class ProductRepository : IProductRepository
     
     public async Task<int> UpdateAsync(int id, Product product)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var editedProduct = _appDbContext!.Products.FirstOrDefault(d => d.Id == id);
+            if (editedProduct == null)
+            {
+                return 404;
+            }
+            else
+            {
+                editedProduct.Name = product.Name;
+                editedProduct.Price = product.Price;
+
+                var result = await _appDbContext.SaveChangesAsync();
+                await Task.CompletedTask;
+
+                return result;   
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return -1;
+        }
     }
 
     public async Task<int> DelAsync(int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var productToRemove = _appDbContext!.Products.FirstOrDefault(product => product.Id == id);
+            if (productToRemove == null)
+            {
+                return 200;
+            }
+            else
+            {
+                _appDbContext!.Remove(productToRemove);
+                var result = await _appDbContext.SaveChangesAsync();
+
+                await Task.CompletedTask;
+                return result;
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return -1;
+        }
     }
 
     public async Task<int> AddAsync(Product product)
     {
-        throw new NotImplementedException();
+        try
+        {
+            _appDbContext!.Products.Add(product);
+            var result = _appDbContext.SaveChanges();
+
+            await Task.CompletedTask;
+            return result;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return -1;
+        }
     }
 
-    public async Task<Product> GetAsync(int id)
+    public async Task<Product?> GetAsync(int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var product = await Task.FromResult(
+                _appDbContext!.Products.FirstOrDefault(product => product.Id == id)
+            );
+
+            return await Task.FromResult(product);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return null;
+        }
     }
 
     public async Task<IEnumerable<Product>> BrowseAllAsync()
     {
-        throw new NotImplementedException();
+        try
+        {
+            IEnumerable<Product> products = await Task.FromResult(_appDbContext!.Products);
+
+            return products;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return new List<Product>();
+        }
     }
 }
