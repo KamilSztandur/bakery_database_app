@@ -10,7 +10,7 @@ public interface IBakeryRepository
 
     Task<int> AddAsync(Bakery bakery);
 
-    Task<Bakery> GetAsync(String bakeryCode);
+    Task<Bakery?> GetAsync(String bakeryCode);
 
     Task<IEnumerable<Bakery>> BrowseAllAsync();
 }

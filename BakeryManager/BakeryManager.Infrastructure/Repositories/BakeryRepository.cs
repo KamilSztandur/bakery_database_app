@@ -14,26 +14,103 @@ public class BakeryRepository : IBakeryRepository
     
     public async Task<int> UpdateAsync(string bakeryCode, Bakery bakery)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var editedBakery = _appDbContext!.Bakeries.FirstOrDefault(b => b.BakeryCode == bakeryCode);
+            if (editedBakery == null)
+            {
+                return await Task.FromResult(404);
+            }
+            else
+            {
+                editedBakery.PostalCode = bakery.PostalCode;
+                editedBakery.StreetName = bakery.StreetName;
+                editedBakery.StreetNumber = bakery.StreetNumber;
+                editedBakery.TownName = bakery.TownName;
+
+                var result = await _appDbContext.SaveChangesAsync();
+                await Task.CompletedTask;
+
+                return result;   
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return -1;
+        }
     }
 
     public async Task<int> DelAsync(string bakeryCode)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var bakeryToRemove = _appDbContext!.Bakeries.FirstOrDefault(bakery => bakery.BakeryCode == bakeryCode);
+            if (bakeryToRemove == null)
+            {
+                return await Task.FromResult(200);
+            }
+            else
+            {
+                _appDbContext!.Remove(bakeryToRemove);
+                var result = await _appDbContext.SaveChangesAsync();
+
+                await Task.CompletedTask;
+                return result;
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return -1;
+        }
     }
 
     public async Task<int> AddAsync(Bakery bakery)
     {
-        throw new NotImplementedException();
+        try
+        {
+            _appDbContext!.Bakeries.Add(bakery);
+            var result = await _appDbContext.SaveChangesAsync();
+
+            await Task.CompletedTask;
+            return result;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return -1;
+        }
     }
 
-    public async Task<Bakery> GetAsync(string bakeryCode)
+    public async Task<Bakery?> GetAsync(string bakeryCode)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var bakery = _appDbContext!.Bakeries.FirstOrDefault(bakery => bakery.BakeryCode == bakeryCode);
+            await Task.CompletedTask;
+            
+            return bakery;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return null;
+        }
     }
 
     public async Task<IEnumerable<Bakery>> BrowseAllAsync()
     {
-        throw new NotImplementedException();
+        try
+        {
+            var bakeries = (await Task.FromResult(_appDbContext!.Bakeries)) as IEnumerable<Bakery>;
+
+            return bakeries;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return new List<Bakery>();
+        }
     }
 }

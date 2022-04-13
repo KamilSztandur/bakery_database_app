@@ -5,7 +5,7 @@ namespace BakeryManager.Core.Domain;
 public class Bakery
 {
     [NotNull]
-    public string BakeryCode { get; }
+    public string BakeryCode { get; set;  }
     
     [NotNull]
     public string TownName { get; set; }

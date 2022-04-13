@@ -54,12 +54,15 @@ public class ClientsController : Controller
     {
         var result = await _clientService.UpdateClient(id, client);
         
-        if (result == -1)
+        switch (result)
         {
-            return BadRequest("Invalid Client body.");
+            case -1:
+                return BadRequest("Invalid Client body.");
+            case 404:
+                return NotFound();
+            default:
+                return Ok();;
         }
-
-        return Ok();;
     }
 
     [HttpDelete("{id}")]

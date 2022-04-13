@@ -5,7 +5,7 @@ namespace BakeryManager.Infrastructure.DTO;
 public class BakeryDTO
 {
     [NotNull]
-    public string BakeryCode { get; }
+    public string BakeryCode { get; set;  }
     
     [NotNull]
     public string TownName { get; set; }

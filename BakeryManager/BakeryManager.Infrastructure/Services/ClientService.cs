@@ -25,27 +25,27 @@ public class ClientService : IClientService
         var client = ParseCreateClientIntoClient(clientBody);
         var result = await _clientsRepository.UpdateAsync(id, client);
         
-        return await Task.FromResult(result);
+        return result;
     }
 
     public async Task<int> DeleteClient(int id)
     {
         var result = await _clientsRepository.DelAsync(id);
         
-        return await Task.FromResult(result);
+        return result;
     }
 
     public async Task<int> AddClient(CreateClient clientBody)
     {
         if (!IsBodyValid(clientBody))
         {
-            return await Task.FromResult(-1);
+            return -1;
         }
         
         var client = ParseCreateClientIntoClient(clientBody);
         var result = await _clientsRepository.AddAsync(client);
 
-        return await Task.FromResult(result);
+        return result;
     }
 
     public async Task<ClientDTO?> GetClient(int id)
@@ -58,7 +58,7 @@ public class ClientService : IClientService
         }
         else
         {
-            return await Task.FromResult(ParseClientIntoClientDTO(client));
+            return ParseClientIntoClientDTO(client);
         }
     }
 
@@ -68,7 +68,7 @@ public class ClientService : IClientService
 
         var clientsDTOs = clients.Select(client => ParseClientIntoClientDTO(client));
 
-        return await Task.FromResult(clientsDTOs);
+        return clientsDTOs;
     }
 
     private static bool IsBodyValid(CreateClient body) => body.Name != null && body.Surname != null;
