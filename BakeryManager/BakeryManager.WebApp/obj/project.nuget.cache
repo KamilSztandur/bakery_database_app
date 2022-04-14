@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ii5EPT9Fq5U4jezZKc19ZkN6oxIoGSTMzPn29qiRvaNQ2f6KcT+fVGAmr14ASwxmqrzRG2JZxPy4fgccGwdzog==",
+  "dgSpecHash": "NJsX3wooEtEjEx/QRkmiMcFdiiBEWtFQDYANTlyEF+VwUFQ0BUQXarUMRJMizP1krCN5Rh9WWqglQ9Advmwz7w==",
   "success": true,
   "projectFilePath": "C:\\Users\\kamil\\DataGripProjects\\bakery_database_app\\BakeryManager\\BakeryManager.WebApp\\BakeryManager.WebApp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\kamil\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
