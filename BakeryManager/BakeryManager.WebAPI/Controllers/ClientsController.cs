@@ -20,7 +20,7 @@ public class ClientsController : Controller
     {
         var result = await _clientService.BrowseAll();
 
-        return Ok(Json(result));
+        return Json(result);;
     }
 
     [HttpGet("{id}")]
@@ -33,7 +33,7 @@ public class ClientsController : Controller
            return NotFound();
        }
        
-       return Ok(Json(result));
+       return Json(result);;
     }
 
     [HttpPost]
@@ -46,7 +46,7 @@ public class ClientsController : Controller
             return BadRequest("Invalid Client body.");
         }
         
-        return Ok(Json(result));
+        return Json(result);;
     }
 
     [HttpPut("{id}")]

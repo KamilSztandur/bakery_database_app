@@ -20,7 +20,7 @@ public class BakeriesController : Controller
     {
         var result = await _bakeryService.BrowseAll();
 
-        return Ok(Json(result));
+        return Json(result);
     }
 
     [HttpGet("{bakeryCode}")]
@@ -33,7 +33,7 @@ public class BakeriesController : Controller
             return NotFound();
         }
        
-        return Ok(Json(result));
+        return Json(result);
     }
 
     [HttpPost]
@@ -46,7 +46,7 @@ public class BakeriesController : Controller
             return BadRequest("InvalbakeryCode Bakery body.");
         }
         
-        return Ok(Json(result));
+        return Json(result);
     }
 
     [HttpPut("{bakeryCode}")]

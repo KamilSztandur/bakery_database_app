@@ -20,7 +20,7 @@ public class DiscountsController : Controller
     {
         var result = await _discountService.BrowseAll();
 
-        return Ok(Json(result));
+        return Json(result);;
     }
 
     [HttpGet("{id}")]
@@ -33,7 +33,7 @@ public class DiscountsController : Controller
             return NotFound();
         }
        
-        return Ok(Json(result));
+        return Json(result);;
     }
 
     [HttpPost]
@@ -46,7 +46,7 @@ public class DiscountsController : Controller
             return BadRequest("Invalid Discount body.");
         }
         
-        return Ok(Json(result));
+        return Json(result);;
     }
 
     [HttpPut("{id}")]

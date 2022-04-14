@@ -18,7 +18,7 @@ public class ViewsController : Controller
     {
         var result = await _viewsService.GetBakeryEarnings();
 
-        return Ok(Json(result));
+        return Json(result);;
     }
     
     [HttpGet]
@@ -27,7 +27,7 @@ public class ViewsController : Controller
     {
         var result = await _viewsService.GetClientsExpenses();
 
-        return Ok(Json(result));
+        return Json(result);;
     }
     
     [HttpGet]
@@ -36,7 +36,7 @@ public class ViewsController : Controller
     {
         var result = await _viewsService.GetEarningsPerProduct();
 
-        return Ok(Json(result));
+        return Json(result);;
     }
     
     [HttpGet]
@@ -45,7 +45,7 @@ public class ViewsController : Controller
     {
         var result = await _viewsService.GetPremiumClients();
 
-        return Ok(Json(result));
+        return Json(result);;
     }
     
     [HttpGet]
@@ -54,6 +54,6 @@ public class ViewsController : Controller
     {
         var result = await _viewsService.GetSoldProducts();
 
-        return Ok(Json(result));
+        return Json(result);;
     }
 }

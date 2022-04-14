@@ -20,7 +20,7 @@ public class ProductsController : Controller
     {
         var result = await _productService.BrowseAll();
 
-        return Ok(Json(result));
+        return Json(result);;
     }
 
     [HttpGet("{id}")]
@@ -33,7 +33,7 @@ public class ProductsController : Controller
             return NotFound();
         }
        
-        return Ok(Json(result));
+        return Json(result);;
     }
 
     [HttpPost]
@@ -46,7 +46,7 @@ public class ProductsController : Controller
             return BadRequest("Invalid Product body.");
         }
         
-        return Ok(Json(result));
+        return Json(result);;
     }
 
     [HttpPut("{id}")]

@@ -20,7 +20,7 @@ public class ReceiptsController : Controller
     {
         var result = await _receiptService.BrowseAll();
 
-        return Ok(Json(result));
+        return Json(result);;
     }
 
     [HttpGet("{id}")]
@@ -33,7 +33,7 @@ public class ReceiptsController : Controller
             return NotFound();
         }
        
-        return Ok(Json(result));
+        return Json(result);;
     }
 
     [HttpPost]
@@ -46,7 +46,7 @@ public class ReceiptsController : Controller
             return BadRequest("Invalid Receipt body.");
         }
         
-        return Ok(Json(result));
+        return Json(result);;
     }
 
     [HttpPut("{id}")]
