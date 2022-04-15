@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BakeryManager.WebApp.Models.ProductVM>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="container" style="display: flex">
+    <h1 style="width: 50%">Products</h1>
+    <p style="width: 50%" align="right">
+        <button type="button" onclick="location.href='@Url.Action("Create", "Products")'" style="padding: 10px; background-color: orangered; color: white; border: 0px; border-radius: 5px">Add new product</button>
+    </p>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
