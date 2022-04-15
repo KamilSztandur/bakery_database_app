@@ -19,6 +19,22 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzY291bnRzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Clients/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Clients/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Clients/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Clients/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Discounts/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY291bnRzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -39,10 +55,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Products/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -57,6 +69,22 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Products/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Receipts/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZWlwdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Receipts/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZWlwdHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Receipts/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZWlwdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Receipts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjZWlwdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Shared/Error.cshtml]
