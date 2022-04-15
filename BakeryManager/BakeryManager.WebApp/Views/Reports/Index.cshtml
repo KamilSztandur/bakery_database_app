@@ -1,0 +1,252 @@
+﻿@model BakeryManager.WebApp.Models.ReportsModels.Reports
+
+@{
+    ViewData["Title"] = "Reports";
+}
+
+<div class="container" style="display: flex">
+    <h1 style="width: 50%">Reports</h1>
+</div>
+
+<br/> <br/>
+
+<div class="container" style="display: flex">
+    <h3 style="width: 50%">Bakeries Earnings</h3>
+    <p style="width: 50%" align="right">
+        <button type="button" style="padding: 10px; background-color: limegreen; color: white; border: 0px; border-radius: 5px">Export to Excel</button>
+    </p>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Bakery Code
+        </th>
+        <th>
+            Postal Address
+        </th>
+        <th>
+            Street Address
+        </th>
+        <th>
+            Units Sold
+        </th>
+        <th>
+            Total Earnings
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.BakeriesEarnings) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BakeryCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostalAddress)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsSold)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalEarnings)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<br/> <br/>
+
+<div class="container" style="display: flex">
+    <h3 style="width: 50%">Earnings Per Product</h3>
+    <p style="width: 50%" align="right">
+        <button type="button" style="padding: 10px; background-color: limegreen; color: white; border: 0px; border-radius: 5px">Export to Excel</button>
+    </p>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Product Name
+        </th>
+        <th>
+            Price Per Unit
+        </th>
+        <th>
+            Units Sold
+        </th>
+        <th>
+            Total Earnings
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.EarningsPerProduct) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.PricePerUnit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsSold)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalEarnings)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<br/> <br/>
+
+<div class="container" style="display: flex">
+    <h3 style="width: 50%">Sold products</h3>
+    <p style="width: 50%" align="right">
+        <button type="button" style="padding: 10px; background-color: limegreen; color: white; border: 0px; border-radius: 5px">Export to Excel</button>
+    </p>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Receipt ID
+        </th>
+        <th>
+            Bakery Code
+        </th>
+        <th>
+            Customer
+        </th>
+        <th>
+            Product Name
+        </th>
+        <th>
+            Total Price
+        </th>
+        <th>
+            Date
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.SoldProducts) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceiptID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BakeryCode)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<br/> <br/>
+
+<div class="container" style="display: flex">
+    <h3 style="width: 50%">Premium Clients</h3>
+    <p style="width: 50%" align="right">
+        <button type="button" style="padding: 10px; background-color: limegreen; color: white; border: 0px; border-radius: 5px">Export to Excel</button>
+    </p>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Client
+        </th>
+        <th>
+            Is Premium?
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.PremiumClients) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.IsPremium)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<br/> <br/>
+
+<div class="container" style="display: flex">
+    <h3 style="width: 50%">Clients Expenses</h3>
+    <p style="width: 50%" align="right">
+        <button type="button" style="padding: 10px; background-color: limegreen; color: white; border: 0px; border-radius: 5px">Export to Excel</button>
+    </p>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Client ID
+        </th>
+        <th>
+            Client
+        </th>
+        <th>
+            Total Expenses
+        </th>
+        <th>
+            Total Units Bought
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.ClientsExpenses) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalExpenses)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalUnitsBought)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

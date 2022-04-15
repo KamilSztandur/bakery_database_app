@@ -24,6 +24,7 @@ public class ClientsController : Controller
         {
             using (var response = await httpClient.GetAsync(restPath))
             {
+                Console.WriteLine("AAAAAAAAAAA" + restPath);
                 var apiResponse = await response.Content.ReadAsStringAsync();
 
                 clientsList = JsonConvert.DeserializeObject<List<ClientVM>>(apiResponse) ?? new List<ClientVM>();
