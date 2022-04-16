@@ -1,0 +1,58 @@
+﻿@model IEnumerable<BakeryManager.WebApp.Models.BakeryVM>
+
+@{
+    ViewData["Title"] = "Bakeries";
+}
+
+<div class="container" style="display: flex">
+    <h1 style="width: 50%">Bakeries</h1>
+    <p style="width: 50%" align="right">
+        <button type="button" onclick="location.href='@Url.Action("Create", "Bakeries")'" style="padding: 10px; background-color: deeppink; color: white; border: 0px; border-radius: 5px">Add new bakery</button>
+    </p>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Bakery Code
+        </th>
+        <th>
+            Town Name
+        </th>
+        <th>
+            Street Name
+        </th>
+        <th>
+            Street Number
+        </th>
+        <th>
+            Postal Code
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BakeryCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TownName)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetNumber)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.PostalCode)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BakeryCode }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.BakeryCode })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
