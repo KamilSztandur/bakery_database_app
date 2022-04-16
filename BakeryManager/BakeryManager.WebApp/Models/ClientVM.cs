@@ -5,7 +5,7 @@ namespace BakeryManager.WebApp.Models;
 public class ClientVM
 {
     [NotNull]
-    public int Id { get; }
+    public int Id { get; set; }
     
     [NotNull]
     public string Name { get; set; }

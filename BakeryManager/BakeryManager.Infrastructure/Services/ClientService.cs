@@ -66,7 +66,7 @@ public class ClientService : IClientService
     {
         var clients = await _clientsRepository.BrowseAllAsync();
 
-        var clientsDTOs = clients.Select(client => ParseClientIntoClientDTO(client));
+        var clientsDTOs = clients.Select(ParseClientIntoClientDTO);
 
         return clientsDTOs;
     }

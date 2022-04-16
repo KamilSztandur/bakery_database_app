@@ -23,7 +23,6 @@ public class BakeryEarningsViewProvider  : IBakeryEarningsView
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
             return new List<BakeryEarnings>();
         }
     }

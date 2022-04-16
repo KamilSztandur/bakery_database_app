@@ -15,8 +15,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\kamil\DataGripProjects\bakery_database_app\BakeryManager\BakeryManager.WebApp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Pages/Discounts/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzY291bnRzXERlbGV0ZS5jc2h0bWw=
+[C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Bakeries/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJpZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Bakeries/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJpZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Bakeries/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJpZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Bakeries/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJpZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kamil/DataGripProjects/bakery_database_app/BakeryManager/BakeryManager.WebApp/Views/Clients/Create.cshtml]

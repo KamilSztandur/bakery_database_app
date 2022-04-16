@@ -24,7 +24,6 @@ public class EarningsPerProductViewProvider  : IEarningsPerProductView
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
             return new List<EarningsPerProduct>();
         }
     }

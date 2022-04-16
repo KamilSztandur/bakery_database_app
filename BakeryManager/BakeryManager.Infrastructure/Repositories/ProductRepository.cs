@@ -34,7 +34,6 @@ public class ProductRepository : IProductRepository
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
             return -1;
         }
     }
@@ -59,7 +58,6 @@ public class ProductRepository : IProductRepository
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
             return -1;
         }
     }
@@ -76,7 +74,6 @@ public class ProductRepository : IProductRepository
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
             return -1;
         }
     }
@@ -93,7 +90,6 @@ public class ProductRepository : IProductRepository
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
             return null;
         }
     }
@@ -108,7 +104,6 @@ public class ProductRepository : IProductRepository
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
             return new List<Product>();
         }
     }

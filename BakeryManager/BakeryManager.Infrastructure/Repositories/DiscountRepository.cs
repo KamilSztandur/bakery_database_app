@@ -36,7 +36,6 @@ public class DiscountRepository : IDiscountRepository
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
             return -1;
         }
     }
@@ -61,7 +60,6 @@ public class DiscountRepository : IDiscountRepository
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
             return -1;
         }
     }
@@ -78,7 +76,6 @@ public class DiscountRepository : IDiscountRepository
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
             return -1;
         }
     }
@@ -95,7 +92,6 @@ public class DiscountRepository : IDiscountRepository
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
             return null;
         }
     }
@@ -110,7 +106,6 @@ public class DiscountRepository : IDiscountRepository
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
             return new List<Discount>();
         }
     }
