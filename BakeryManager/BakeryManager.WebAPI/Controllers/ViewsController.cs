@@ -53,6 +53,8 @@ public class ViewsController : Controller
     public async Task<IActionResult> BrowseAll()
     {
         var result = await _viewsService.GetSoldProducts();
+        
+        
 
         return Json(result);;
     }
