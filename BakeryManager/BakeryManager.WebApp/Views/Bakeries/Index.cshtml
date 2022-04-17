@@ -49,8 +49,8 @@
                 @Html.DisplayFor(modelItem => item.PostalCode)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.BakeryCode }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.BakeryCode })
+                @Html.ActionLink("Edit", "Edit", new { bakeryCode = item.BakeryCode }) |
+                @Html.ActionLink("Delete", "Delete", new { bakeryCode = item.BakeryCode })
             </td>
         </tr>
     }

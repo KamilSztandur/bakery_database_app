@@ -112,9 +112,8 @@ public class BakeriesController : Controller
             using (var response = await httpBakery.GetAsync($"{restPath}/{bakeryCode}"))
             {
                 var apiResponse = await response.Content.ReadAsStringAsync();
-                
-                bakery = JsonConvert.DeserializeObject<BakeryVM>(apiResponse);
 
+                bakery = JsonConvert.DeserializeObject<BakeryVM>(apiResponse);
             }
         }
 
@@ -131,6 +130,8 @@ public class BakeriesController : Controller
             using (var httpBakery = new HttpClient())
             {
                 await httpBakery.DeleteAsync($"{restPath}/{bakery.BakeryCode}");
+                
+                Console.WriteLine($"{restPath}/{bakery.BakeryCode}");
 
                 return RedirectToAction(nameof(Index));
             }

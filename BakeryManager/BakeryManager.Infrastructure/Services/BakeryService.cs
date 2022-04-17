@@ -84,6 +84,7 @@ public class BakeryService : IBakeryService
         {
             BakeryCode = bakery.BakeryCode,
             PostalCode = bakery.PostalCode,
+            TownName = bakery.TownName,
             StreetName = bakery.StreetName,
             StreetNumber = bakery.StreetNumber
         };
