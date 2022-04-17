@@ -129,6 +129,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.0-preview.2.22153.1, )"
+            },
+            "System.Linq": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [

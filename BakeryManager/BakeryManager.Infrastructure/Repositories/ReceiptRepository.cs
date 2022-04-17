@@ -1,5 +1,6 @@
 ﻿using BakeryManager.Core.Domain;
 using BakeryManager.Core.Repositories;
+using System.Linq;
 
 namespace BakeryManager.Infrastructure.Repositories;
 
@@ -67,10 +68,37 @@ public class ReceiptRepository : IReceiptRepository
 
     public async Task<int> AddAsync(Receipt receipt)
     {
+
+        try
+        {
+            var bakeryExists = 
+                (from bakery in _appDbContext!.Bakeries
+                    where bakery.BakeryCode == receipt.BakeryCode
+                    select bakery).Count() == 1;
+            
+            var clientExists = 
+                (from client in _appDbContext!.Clients 
+                    where client.Id == receipt.ClientId 
+                    select client).Count() == 1;
+
+            var productExists =
+                (from product in _appDbContext!.Products
+                    where product.Id == receipt.ProductId
+                    select product).Count() == 1;
+
+            if (!bakeryExists || !clientExists || !productExists)
+            {
+                return -2;
+            }
+        } catch (Exception)
+        {
+            return -2;
+        }
+        
         try
         {
             _appDbContext!.Receipts.Add(receipt);
-            var result = _appDbContext.SaveChanges();
+            var result = await _appDbContext.SaveChangesAsync();
 
             await Task.CompletedTask;
             return result;
