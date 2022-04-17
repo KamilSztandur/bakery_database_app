@@ -111,6 +111,9 @@ BEGIN
 
 	INSERT INTO main.Products (Name, Price)
 	VALUES ('Krakow bagpipe', 4.30)
+
+	INSERT INTO main.Products (Name, Price)
+	VALUES ('Garlic Baguette', 6.99)
 END
 GO;
 
