@@ -48,7 +48,13 @@ dotnet ef --startup-project ../BakeryManager.WebAPI/BakeryManager.WebAPI.csproj 
 
 6. Launch WebAPI (IIS EXpress)
 7. Launch WebApp.
-8. Have fun!
+8. Go to 
+``
+https://localhost:7247/
+``
+
+
+10. Have fun!
 
 ## Functionalities
 * Intuitivie GUI for database management.
