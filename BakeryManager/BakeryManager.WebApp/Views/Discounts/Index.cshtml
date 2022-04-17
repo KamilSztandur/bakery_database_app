@@ -17,7 +17,7 @@
             ID
         </th>
         <th>
-            Money Threshold
+            Money Threshold (PLN)
         </th>
         <th>
             %
@@ -40,10 +40,10 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MoneyThreshold)
+                @Html.Raw(item.MoneyThreshold.ToString("F"))
             </td>            
             <td>
-                @Html.DisplayFor(modelItem => item.ValueInPercents)
+                @Html.Raw(item.ValueInPercents.ToString("F"))
             </td>            
             <td>
                 @Html.DisplayFor(modelItem => item.IsActive)

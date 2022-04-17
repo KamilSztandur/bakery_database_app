@@ -32,7 +32,7 @@
             Units Sold
         </th>
         <th>
-            Total Earnings
+            Total Earnings (PLN)
         </th>
     </tr>
     </thead>
@@ -52,7 +52,7 @@
                 @Html.DisplayFor(modelItem => item.UnitsSold)
             </td>            
             <td>
-                @Html.DisplayFor(modelItem => item.TotalEarnings)
+                @Html.Raw(item.TotalEarnings.ToString("F"))
             </td>
         </tr>
     }
@@ -83,7 +83,7 @@
             Units Sold
         </th>
         <th>
-            Total Earnings
+            Total Earnings (PLN)
         </th>
     </tr>
     </thead>
@@ -103,7 +103,7 @@
                 @Html.DisplayFor(modelItem => item.UnitsSold)
             </td>            
             <td>
-                @Html.DisplayFor(modelItem => item.TotalEarnings)
+                @Html.Raw(item.TotalEarnings.ToString("F"))
             </td>
         </tr>
     }
@@ -134,7 +134,7 @@
             Product Name
         </th>
         <th>
-            Total Price
+            Total Price (PLN)
         </th>
         <th>
             Date
@@ -157,7 +157,7 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>            
             <td>
-                @Html.DisplayFor(modelItem => item.TotalPrice)
+                @Html.Raw(item.TotalPrice.ToString("F"))
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
@@ -224,7 +224,7 @@
             Client
         </th>
         <th>
-            Total Expenses
+            Total Expenses (PLN)
         </th>
         <th>
             Total Units Bought
@@ -241,7 +241,7 @@
                 @Html.DisplayFor(modelItem => item.Client)
             </td>            
             <td>
-                @Html.DisplayFor(modelItem => item.TotalExpenses)
+                @Html.Raw(item.TotalExpenses.ToString("F"))
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TotalUnitsBought)

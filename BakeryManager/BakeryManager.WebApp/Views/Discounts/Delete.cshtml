@@ -15,10 +15,10 @@
             @Html.DisplayFor(model => model.Id)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MoneyThreshold)
+            @Html.DisplayNameFor(model => model.MoneyThreshold) (PLN)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MoneyThreshold)
+            @Html.Raw(Model.MoneyThreshold.ToString("F"))
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IsActive)
@@ -30,7 +30,7 @@
             @Html.DisplayNameFor(model => model.ValueInPercents)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ValueInPercents)
+            @Html.Raw(Model.ValueInPercents.ToString("F"))
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Description)

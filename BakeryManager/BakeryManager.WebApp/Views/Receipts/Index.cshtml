@@ -26,7 +26,7 @@
             Bakery Code
         </th>
         <th>
-            Total Price
+            Total Price (PLN)
         </th>
         <th>
             Date
@@ -49,7 +49,7 @@
                 @Html.DisplayFor(modelItem => item.BakeryCode)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TotalPrice)
+                @Html.Raw(item.TotalPrice.ToString("F"))
             </td>            
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
