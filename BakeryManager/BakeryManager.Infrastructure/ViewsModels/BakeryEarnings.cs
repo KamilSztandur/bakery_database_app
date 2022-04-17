@@ -2,13 +2,13 @@
 
 public class BakeryEarnings
 {
-    public string BakeryCode;
+    public string BakeryCode { get; set; }
     
-    public string PostalAddress;
+    public string PostalAddress { get; set; }
     
-    public string StreetAddress;
+    public string StreetAddress { get; set; }
     
-    public int UnitsSold;
+    public int UnitsSold { get; set; }
     
-    public double TotalEarnings;
+    public double TotalEarnings { get; set; }
 }
